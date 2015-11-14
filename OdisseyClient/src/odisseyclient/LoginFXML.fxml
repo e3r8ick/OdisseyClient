@@ -15,7 +15,7 @@
       <String fx:value="0.6);        }" />
    </styleClass>
     <children>
-        <Button fx:id="loginButton" layoutX="757.0" layoutY="365.0" onAction="#handleButtonAction" text="Login" />
+        <Button fx:id="loginButton" layoutX="757.0" layoutY="365.0" onAction="#goToUser" text="Login" />
         <Label fx:id="label" layoutX="126" layoutY="120" minHeight="16" minWidth="69" />
       <Label fx:id="textTittle1" layoutX="498.0" layoutY="287.0" text="Odissey" textFill="#9a9292">
          <font>

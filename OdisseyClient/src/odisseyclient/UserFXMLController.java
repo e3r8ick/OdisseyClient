@@ -10,21 +10,19 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Label;
 
 /**
+ * FXML Controller class
  *
  * @author erick
  */
-public class LoginFXMLController implements Initializable, ControlledScreen{
-    
+public class UserFXMLController implements Initializable, ControlledScreen {
+
     ScreensController myController;
     
-    @FXML
-    private void goToUser(ActionEvent event) {
-        myController.setScreen(ScreensFramework.USER_SCREEN_FXML);
-    }
-    
+    /**
+     * Initializes the controller class.
+     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
@@ -33,6 +31,11 @@ public class LoginFXMLController implements Initializable, ControlledScreen{
     @Override
     public void setScreenParent(ScreensController screenParent) {
         myController = screenParent;
+    }
+    
+    @FXML
+    private void handleButtonAction(ActionEvent event) {
+       // myController.setScreen(ScreensFramework.USER_SCREEN_FXML);
     }
     
 }
