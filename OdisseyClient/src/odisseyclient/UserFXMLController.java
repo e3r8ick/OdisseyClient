@@ -33,9 +33,9 @@ public class UserFXMLController implements Initializable, ControlledScreen {
         myController = screenParent;
     }
     
-    @FXML
+   /* @FXML
     private void handleButtonAction(ActionEvent event) {
        // myController.setScreen(ScreensFramework.USER_SCREEN_FXML);
-    }
+    }*/
     
 }

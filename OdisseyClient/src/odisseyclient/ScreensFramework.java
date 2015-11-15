@@ -33,7 +33,7 @@ public class ScreensFramework extends Application {
        //mainContainer.loadScreen(ScreensFramework.PLAYER_SCREEN, ScreensFramework.PLAYER_SCREEN_FXML); 
 
        mainContainer.setScreen(ScreensFramework.MAIN_SCREEN); 
-       mainContainer.addScreen(USER_SCREEN_FXML, mainContainer);
+       mainContainer.addScreen(USER_SCREEN_FXML, mainContainer.getScreen(USER_SCREEN));
 
        Group root = new Group(); 
        root.getChildren().addAll(mainContainer); 

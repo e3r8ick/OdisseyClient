@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
+    <system systemId="http://52.88.91.22/Odyssey/" uri="xml-resources/web-service-references/WsClient/wsdl/52.88.91.22/odyssey/index"/>
+</catalog>

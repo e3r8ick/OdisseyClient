@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Odyssey: A rush to your ears.</title>
+    <link rel="stylesheet" href="css/style.css">
+    
+    
+    <style>
+      
+      @import url(http://fonts.googleapis.com/css?family=Exo:100,200,400);
+      @import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:700,400,300);
+      
+      span{
+        color: #5379fa;
+      }
+      
+      h1 {
+        height: 100% ;
+        width: 100%;
+        
+        text-align: center;
+        font-family: 'Exo', sans-serif;
+        font-size: 35px;
+        font-weight: 200;
+        color:white;
+       
+        padding-top: 10%;
+        padding-bottom: 10%;
+        
+        vertical-align: middle;
+        
+        background-image:url(images/panel.png);
+        background-size: cover;
+        background-position: center;
+      }
+      
+      a {
+        color:white;
+        text-decoration: none;
+      }
+      
+      nav {
+        width: 40%;
+        text-align: center;        
+        box-shadow:4px 4px 4px #000;
+        margin: 0 auto;
+        background-image:url(images/panel.png);
+        background-size: cover;
+      }
+  
+    </style>
+
+  </head>
+  <body>
+
+    <h1>
+      <img class="mid center" src="images/icon.png" alt="Logo" style=" width:100px"> Odys<span>sey</span>            
+    </h1>
+    
+    <nav>      
+      <a href="login.html" >Login</a>
+        -
+        <a href="download.html">Download</a>
+        -
+        <a href="howto.html">How To</a>
+        -
+        <a href="docu.html">Documentation</a>
+        -
+        <a href="about.html">About</a>
+    </nav>
+  
+  </body>
+</html>
