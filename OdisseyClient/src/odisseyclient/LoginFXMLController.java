@@ -10,6 +10,7 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import restclient.OdisseyRestClient;
 
 /**
  *
@@ -21,6 +22,7 @@ public class LoginFXMLController implements Initializable, ControlledScreen{
     
     @FXML
     private void goToUser(ActionEvent event) {
+        OdisseyRestClient client = new OdisseyRestClient();
         myController.setScreen(ScreensFramework.USER_SCREEN_FXML);
     }
     

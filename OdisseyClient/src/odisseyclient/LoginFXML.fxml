@@ -6,6 +6,7 @@
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import validacion.*?>
 
 <AnchorPane id="AnchorPane" prefHeight="766.0" prefWidth="1366.0" stylesheets="@../../css/style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="odisseyclient.LoginFXMLController">
    <styleClass>
@@ -16,7 +17,6 @@
    </styleClass>
     <children>
         <Button fx:id="loginButton" layoutX="757.0" layoutY="365.0" onAction="#goToUser" text="Login" />
-        <Label fx:id="label" layoutX="126" layoutY="120" minHeight="16" minWidth="69" />
       <Label fx:id="textTittle1" layoutX="498.0" layoutY="287.0" text="Odissey" textFill="#9a9292">
          <font>
             <Font name="Impact" size="24.0" />
@@ -27,7 +27,7 @@
             <Font name="Impact" size="24.0" />
          </font>
       </Label>
-      <TextField fx:id="usernameField" layoutX="698.0" layoutY="253.0" text="username" />
-      <TextField fx:id="passwordField" layoutX="698.0" layoutY="303.0" text="password" />
+      <UsernameText id="username" fx:id="usernameField" layoutX="698.0" layoutY="253.0" />
+      <PasswordText id="password" fx:id="passwordField" layoutX="698.0" layoutY="303.0" />
     </children>
 </AnchorPane>

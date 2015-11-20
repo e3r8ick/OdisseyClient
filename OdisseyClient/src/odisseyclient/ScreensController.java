@@ -77,7 +77,7 @@ public  class ScreensController extends StackPane{
         if(!getChildren().isEmpty()){ 
             Timeline fade= new Timeline(new KeyFrame(Duration.ZERO, 
                         new KeyValue(opacity,1.0)),
-                        new KeyFrame(new Duration(1000), new EventHandler<ActionEvent>() { 
+                        new KeyFrame(new Duration(100), new EventHandler<ActionEvent>() { 
 
                  @Override
                  public void handle(ActionEvent t) { 
