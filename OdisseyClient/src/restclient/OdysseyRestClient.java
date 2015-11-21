@@ -33,7 +33,6 @@ import org.json.simple.parser.JSONParser;
  * @author erick
  */
 public class OdysseyRestClient{
-<<<<<<< HEAD
 	protected final String USER_AGENT = "Mozilla/5.0";
 	protected String url;
 	protected String charset;
@@ -43,7 +42,7 @@ public class OdysseyRestClient{
 		this.url = "http://52.88.91.22/Odyssey/";
 		this.charset = "UTF-8";
 	}
-	public void disconnect (int pUid) throws MalformedURLException, IOException, ParseException{
+	public void disconnect () throws MalformedURLException, IOException, ParseException{
 
 		URL obj = new URL(this.url + "disconnect.php");
 		HttpURLConnection con =  (HttpURLConnection) obj.openConnection();
@@ -54,7 +53,7 @@ public class OdysseyRestClient{
 		con.setRequestProperty("Accept-Language", "en-US,en;q=0.5");
 
 		String urlParameters = String.format("uid=%s", 
-				URLEncoder.encode(Integer.toString(pUid), this.charset));
+				URLEncoder.encode(Integer.toString(this.uid), this.charset));
 
 		// Send post request
 		con.setDoOutput(true);
@@ -93,21 +92,9 @@ public class OdysseyRestClient{
 		}
 	}
 
-	public void Login (String pUsername , String pPassword) throws MalformedURLException, IOException, ParseException{
-
-=======
-    private final String USER_AGENT = "Mozilla/5.0";
-    private String url;
-    private String charset;
-    
-    public OdysseyRestClient(){
-    	this.url = "http://52.88.91.22/Odyssey/";
-    	this.charset = "UTF-8";
-    }
-    
+ 
     public void Login (String pUsername , String pPassword) throws MalformedURLException, IOException{
     	
->>>>>>> 2d1c2269d24d548226f67a70b117e2dd83b622de
 		URL obj = new URL(this.url + "login_user.php");
 		HttpURLConnection con =  (HttpURLConnection) obj.openConnection();
 
@@ -157,10 +144,10 @@ public class OdysseyRestClient{
 		}
 	}
 
-	public void Unfriend (int pUid , int pFid) throws IOException{
+	public void Unfriend (int pFid) throws IOException{
 
 		String urlParameters = String.format("uf&uid=%s&fid=%s", 
-				URLEncoder.encode(Integer.toString(pUid), this.charset), 
+				URLEncoder.encode(Integer.toString(this.uid), this.charset), 
 				URLEncoder.encode(Integer.toString(pFid), this.charset));
 
 		URL obj = new URL(this.url + "social.php?" + urlParameters);
@@ -202,10 +189,10 @@ public class OdysseyRestClient{
 		}
 	}
 
-	public void Befriend (int pUid , int pFid) throws IOException{
+	public void Befriend (int pFid) throws IOException{
 
 		String urlParameters = String.format("bf&uid=%s&fid=%s", 
-				URLEncoder.encode(Integer.toString(pUid), this.charset), 
+				URLEncoder.encode(Integer.toString(this.uid), this.charset), 
 				URLEncoder.encode(Integer.toString(pFid), this.charset));
 
 		URL obj = new URL(this.url + "social.php?" + urlParameters);
@@ -248,7 +235,7 @@ public class OdysseyRestClient{
 		}
 	}
 
-	public void Comment(int pUid , int pSid, String pComment) throws IOException{
+	public void Comment(int pSid, String pComment) throws IOException{
 		URL obj = new URL(this.url + "social.php");
 		HttpURLConnection con =  (HttpURLConnection) obj.openConnection();
 
@@ -258,7 +245,7 @@ public class OdysseyRestClient{
 		con.setRequestProperty("Accept-Language", "en-US,en;q=0.5");
 
 		String urlParameters = String.format("c=c&uid=%s&sid=%s&comm=%s", 
-				URLEncoder.encode(Integer.toString(pUid), this.charset),
+				URLEncoder.encode(Integer.toString(this.uid), this.charset),
 				URLEncoder.encode(Integer.toString(pSid), this.charset),
 				URLEncoder.encode(pComment, this.charset));
 
@@ -386,7 +373,7 @@ public class OdysseyRestClient{
 		}
 	}
 
-	public void uploadSong(int pUid, String pSongPath) throws IOException{
+	public void uploadSong(String pSongPath) throws IOException{
 		File f = new File (pSongPath);
 //		String attachmentName = "file";
 //		String attachmentFileName = f.getName();
@@ -395,7 +382,7 @@ public class OdysseyRestClient{
 		String boundary =  "*****";
 		
 		HttpURLConnection httpUrlConnection = null;
-		URL url = new URL("http://52.88.91.22/Odyssey/song.php?ups&uid=" + Integer.toString(pUid));
+		URL url = new URL("http://52.88.91.22/Odyssey/song.php?ups&uid=" + Integer.toString(this.uid));
 		httpUrlConnection = (HttpURLConnection) url.openConnection();
 		httpUrlConnection.setUseCaches(false);
 		httpUrlConnection.setDoOutput(true);
@@ -447,10 +434,10 @@ public class OdysseyRestClient{
 		
 	}
 
-	public void like (int pUid, int pSid) throws IOException{
+	public void like (int pSid) throws IOException{
 
 		String urlParameters = String.format("Like&uid=%s&sid=%s", 
-				URLEncoder.encode(Integer.toString(pUid), this.charset), 
+				URLEncoder.encode(Integer.toString(this.uid), this.charset), 
 				URLEncoder.encode(Integer.toString(pSid), this.charset));
 
 		URL obj = new URL(this.url + "social.php?" + urlParameters);
@@ -492,10 +479,10 @@ public class OdysseyRestClient{
 			System.out.println(e.getMessage());
 		}
 	}
-	public void dislike (int pUid, int pSid) throws IOException{
+	public void dislike (int pSid) throws IOException{
 
 		String urlParameters = String.format("Dislike&uid=%s&sid=%s", 
-				URLEncoder.encode(Integer.toString(pUid), this.charset), 
+				URLEncoder.encode(Integer.toString(this.uid), this.charset), 
 				URLEncoder.encode(Integer.toString(pSid), this.charset));
 
 		URL obj = new URL(this.url + "social.php?" + urlParameters);
@@ -545,15 +532,15 @@ public class OdysseyRestClient{
 		//		http.sendGet();
 		//		
 		System.out.println("\nTesting 1 - Send Http POST request");
-		//http.Login("root", "1234");
+		http.Login("root", "1234");
 		//http.disconnect(3);
 		//http.Befriend(3, 7);
 //		http.Unfriend(3, 7);
 //		http.uploadSong(3, "/home/zyoruk/AUD-20150402-WA0001.mp3");
 //		http.Comment(3, 35, "MeGusta");
 //		http.ChangeSongMetadata(35, "Test", "", "", "", "Metal", "");
-		http.like(3, 35);
-		http.dislike(3, 35);
+		http.like(35);
+		http.dislike(35);
 
 	}
 
