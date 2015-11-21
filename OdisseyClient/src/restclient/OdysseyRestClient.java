@@ -524,6 +524,51 @@ public class OdysseyRestClient{
 			System.out.println(e.getMessage());
 		}
 	}
+	public void download (String pSongName) throws IOException{
+
+		String urlParameters = String.format("ds&uid=%s&filename=%s", 
+				URLEncoder.encode(Integer.toString(this.uid), this.charset), 
+				URLEncoder.encode(pSongName), this.charset);
+
+		URL obj = new URL(this.url + "song.php?" + urlParameters);
+
+		HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+
+		// optional default is GET
+		con.setRequestMethod("GET");
+
+		//add request header
+		con.setRequestProperty("User-Agent", USER_AGENT);
+
+		int responseCode = con.getResponseCode();
+		System.out.println("\nSending 'GET' request to URL : " + url);
+		System.out.println("Response Code : " + responseCode);
+
+		BufferedReader in = new BufferedReader(
+				new InputStreamReader(con.getInputStream()));
+		String inputLine;
+		StringBuffer response = new StringBuffer();
+
+		while ((inputLine = in.readLine()) != null) {
+			response.append(inputLine);
+		}
+		in.close();
+
+
+		JSONParser parser = new JSONParser();
+
+
+		try{
+			Object o = parser.parse(response.toString());
+			JSONObject j = (JSONObject) o;
+			this.uid = Integer.parseInt(j.get("ID").toString());
+
+		}catch(ParseException e){
+
+			//print result
+			System.out.println(e.getMessage());
+		}
+	}
 	public static void main(String[] args) throws Exception {
 
 		OdysseyRestClient http = new OdysseyRestClient();
@@ -533,11 +578,11 @@ public class OdysseyRestClient{
 		//		
 		System.out.println("\nTesting 1 - Send Http POST request");
 		http.Login("root", "1234");
-		//http.disconnect(3);
-		//http.Befriend(3, 7);
-//		http.Unfriend(3, 7);
-//		http.uploadSong(3, "/home/zyoruk/AUD-20150402-WA0001.mp3");
-//		http.Comment(3, 35, "MeGusta");
+		//http.disconnect();
+		//http.Befriend(7);
+//		http.Unfriend(7);
+//		http.uploadSong("/home/zyoruk/AUD-20150402-WA0001.mp3");
+//		http.Comment(35, "MeGusta");
 //		http.ChangeSongMetadata(35, "Test", "", "", "", "Metal", "");
 		http.like(35);
 		http.dislike(35);
