@@ -24,8 +24,10 @@ import validacion.*;
 public class LoginFXMLController implements Initializable, ControlledScreen{
     
     ScreensController myController;
-    @FXML private PasswordText passwordText;
-    @FXML private UsernameText username;
+    @FXML 
+    private PasswordText passwordText;
+    @FXML 
+    private UsernameText usernameText; 
     
     private StringProperty textProperty = new SimpleStringProperty();
     
@@ -46,11 +48,5 @@ public class LoginFXMLController implements Initializable, ControlledScreen{
     public void setScreenParent(ScreensController screenParent) {
         myController = screenParent;
     }
-    
-
-    public void init_bindings() {
-    UsernameText Gear = (UsernameText) new TextField();
-    username.textProperty().bind(Gear.textProperty()) ;
-}
     
 }

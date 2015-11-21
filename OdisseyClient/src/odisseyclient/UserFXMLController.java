@@ -13,8 +13,12 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+import javafx.scene.media.MediaView;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import javax.swing.JOptionPane;
 
 /**
  * FXML Controller class
@@ -27,6 +31,9 @@ public class UserFXMLController implements Initializable, ControlledScreen {
     final FileChooser fileChooser = new FileChooser();
     Stage stage = new Stage();
     DataBaseManager manager = new DataBaseManager();
+    String path;
+    static Media media;
+    static MediaPlayer mediaPlayer;
     
     
     /**
@@ -34,7 +41,7 @@ public class UserFXMLController implements Initializable, ControlledScreen {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+      
     }    
 
     @Override
@@ -49,10 +56,38 @@ public class UserFXMLController implements Initializable, ControlledScreen {
          List<File> list = fileChooser.showOpenMultipleDialog(stage);
                     if (list != null) {
                         for (File file : list) {
-                            manager.getBaseLocal().subirMusica(file.toString());
+                            path = file.toString();
+                            manager.getBaseLocal().subirMusica(path);
                             manager.getBaseLocal().getCanciones();
                         }
                     }
+    }
+    
+    @FXML
+    private void play(ActionEvent event) {
+        if(path==null){
+            JOptionPane.showMessageDialog(null, "No hay ninguna cancion cargada");
+        }
+        else if(media==null){
+            media = new Media(new File(path).toURI().toString());
+            mediaPlayer = new MediaPlayer(media);
+            mediaPlayer.setAutoPlay(true); 
+        }
+        else if(!(mediaPlayer.isAutoPlay())){
+            mediaPlayer.setAutoPlay(true);            
+        }
+    }
+    
+    @FXML
+    private void stop(ActionEvent event){
+        mediaPlayer.stop();
+        mediaPlayer.setAutoPlay(false); 
+    }
+    
+    @FXML
+    private void pause(ActionEvent event){
+        mediaPlayer.pause();
+        mediaPlayer.setAutoPlay(false); 
     }
     
      private static void configureFileChooser(final FileChooser fileChooser){                           
