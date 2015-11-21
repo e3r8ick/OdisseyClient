@@ -9,6 +9,7 @@ import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -525,7 +526,7 @@ public class OdysseyRestClient{
 		}
 	}
 	public void download (String pSongName) throws IOException{
-
+		final int BUFFER_SIZE = 4096;
 		String urlParameters = String.format("ds&uid=%s&filename=%s", 
 				URLEncoder.encode(Integer.toString(this.uid), this.charset), 
 				URLEncoder.encode(pSongName), this.charset);
@@ -535,39 +536,48 @@ public class OdysseyRestClient{
 		HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 
 		// optional default is GET
-		con.setRequestMethod("GET");
+//		con.setRequestMethod("GET");
 
 		//add request header
-		con.setRequestProperty("User-Agent", USER_AGENT);
+//		con.setRequestProperty("User-Agent", USER_AGENT);
 
 		int responseCode = con.getResponseCode();
+        String fileName = "";
+        String disposition = con.getHeaderField("Content-Disposition");
+        String contentType = con.getContentType();
+        int contentLength = con.getContentLength();
+        
+        if (disposition != null) {
+            // extracts file name from header field
+            int index = disposition.indexOf("filename=");
+            if (index > 0) {
+                fileName = disposition.substring(index + 10,
+                        disposition.length() - 1);
+            }
+        } else{
+        	fileName = pSongName;
+        }
+
 		System.out.println("\nSending 'GET' request to URL : " + url);
 		System.out.println("Response Code : " + responseCode);
 
-		BufferedReader in = new BufferedReader(
-				new InputStreamReader(con.getInputStream()));
-		String inputLine;
-		StringBuffer response = new StringBuffer();
+        // opens input stream from the HTTP connection
+        InputStream inputStream = con.getInputStream();
+        String saveFilePath = "../Canciones" + File.separator + fileName;
+        
+        // opens an output stream to save into file
+        FileOutputStream outputStream = new FileOutputStream(saveFilePath);
 
-		while ((inputLine = in.readLine()) != null) {
-			response.append(inputLine);
-		}
-		in.close();
+        int bytesRead = -1;
+        byte[] buffer = new byte[BUFFER_SIZE];
+        while ((bytesRead = inputStream.read(buffer)) != -1) {
+            outputStream.write(buffer, 0, bytesRead);
+        }
 
+        outputStream.close();
+        inputStream.close();
 
-		JSONParser parser = new JSONParser();
-
-
-		try{
-			Object o = parser.parse(response.toString());
-			JSONObject j = (JSONObject) o;
-			this.uid = Integer.parseInt(j.get("ID").toString());
-
-		}catch(ParseException e){
-
-			//print result
-			System.out.println(e.getMessage());
-		}
+        System.out.println("File downloaded");
 	}
 	public static void main(String[] args) throws Exception {
 
@@ -586,6 +596,7 @@ public class OdysseyRestClient{
 //		http.ChangeSongMetadata(35, "Test", "", "", "", "Metal", "");
 		http.like(35);
 		http.dislike(35);
+		http.download("Test");
 
 	}
 
