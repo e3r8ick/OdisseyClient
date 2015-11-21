@@ -8,6 +8,7 @@ package odisseyclient;
 import javafx.application.Application;
 import javafx.scene.Group;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 /**
@@ -38,7 +39,9 @@ public class ScreensFramework extends Application {
        Group root = new Group(); 
        root.getChildren().addAll(mainContainer); 
        Scene scene = new Scene(root); 
-       primaryStage.setScene(scene); 
+       primaryStage.setScene(scene);
+       primaryStage.setTitle("OdysseyClient");
+       primaryStage.getIcons().add(new Image(ScreensFramework.class.getResourceAsStream( "icon.png")));
        primaryStage.show(); 
      } 
      

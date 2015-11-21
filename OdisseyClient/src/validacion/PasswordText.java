@@ -13,7 +13,7 @@ import javafx.scene.control.PasswordField;
  */
 public class PasswordText extends PasswordField{
     
-    static ControllerLogin controller;
+    ControllerLogin controller;
 
     public PasswordText() {
         this.setPromptText("password");
@@ -21,9 +21,11 @@ public class PasswordText extends PasswordField{
     }
     
     @Override
-    public String getText(int start, int end) {
-        //String pass = super.getText();
-        //System.out.println("Password: "+pass);
+    public String getText(int start, int end){
+        String pass = super.getText();
+        System.out.println("Password: "+pass);
+        
+        //controller.setPassword(pass);
         return super.getText(start, end); //To change body of generated methods, choose Tools | Templates.
     }
     

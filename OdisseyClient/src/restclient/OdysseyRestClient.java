@@ -20,7 +20,7 @@ import java.net.HttpURLConnection;
  * @author erick
  */
 public class OdysseyRestClient{
-	private final String USER_AGENT = "Mozilla/5.0";
+    private final String USER_AGENT = "Mozilla/5.0";
     private String url;
     private String charset;
     

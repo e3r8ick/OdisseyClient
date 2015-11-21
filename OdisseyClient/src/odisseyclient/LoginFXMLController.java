@@ -8,12 +8,12 @@ package odisseyclient;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-import javafx.beans.property.ReadOnlyStringProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.TextField;
 import restclient.OdysseyRestClient;
 import validacion.*;
 
@@ -25,7 +25,7 @@ public class LoginFXMLController implements Initializable, ControlledScreen{
     
     ScreensController myController;
     @FXML private PasswordText passwordText;
-    @FXML private UsernameText usernameText;
+    @FXML private UsernameText username;
     
     private StringProperty textProperty = new SimpleStringProperty();
     
@@ -39,22 +39,18 @@ public class LoginFXMLController implements Initializable, ControlledScreen{
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
+        //init_bindings();
     }
-    /*
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        assert usernameText != null : "fx:id=\"usernameField\" was not injected: check your FXML file 'TestView.fxml'.";
-           usernameText.textProperty().bind(textProperty);
-    }
-
-    public ReadOnlyStringProperty textProperty(){
-          return textProperty;
-    }   */
-
+    
     @Override
     public void setScreenParent(ScreensController screenParent) {
         myController = screenParent;
     }
+    
+
+    public void init_bindings() {
+    UsernameText Gear = (UsernameText) new TextField();
+    username.textProperty().bind(Gear.textProperty()) ;
+}
     
 }

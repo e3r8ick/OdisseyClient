@@ -27,7 +27,7 @@
             <Font name="Impact" size="24.0" />
          </font>
       </Label>
-      <UsernameText id="username" fx:id="usernameField" layoutX="698.0" layoutY="253.0" />
-      <PasswordText id="password" fx:id="passwordField" layoutX="698.0" layoutY="303.0" />
+      <UsernameText id="username" fx:id="usernameField" layoutX="698.0" layoutY="253.0" text=""/>
+      <PasswordText id="password" fx:id="passwordField" layoutX="698.0" layoutY="303.0" text=""/>
     </children>
 </AnchorPane>

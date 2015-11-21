@@ -23,8 +23,8 @@ public class UsernameText extends TextField{
 
     @Override
     public String getText(int start, int end) {
-        //username= super.getText();
-        //System.out.println("Username: "+ username );
+        username= super.getText();
+        System.out.println("Username: "+ username );
         return super.getText(start, end); //To change body of generated methods, choose Tools | Templates.
     }
     

@@ -8,12 +8,12 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="766.0" prefWidth="1367.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="odisseyclient.UserFXMLController">
+<AnchorPane id="AnchorPane" prefHeight="766.0" prefWidth="1367.0" styleClass="@../../css/style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="odisseyclient.UserFXMLController">
     <stylesheets>
         <URL value="@../../css/style.css" />
     </stylesheets>
    <children>
-      <Label layoutX="56.0" layoutY="41.0" text="Bienvenido " textFill="#9a9292">
+      <Label layoutX="56.0" layoutY="41.0" text="Welcome " textFill="#9a9292">
          <font>
             <Font name="Impact" size="24.0" />
          </font>

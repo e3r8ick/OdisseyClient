@@ -9,10 +9,10 @@ package validacion;
  *
  * @author erick
  */
-public final class ControllerLogin {
-    private String username;
-    private String password;
-    private UsernameText usernameText;
+public class ControllerLogin {
+    private static String username;
+    private static String password;
+    static UsernameText user;
 
     /**
      * @return the username
@@ -42,28 +42,14 @@ public final class ControllerLogin {
         password = aPassword;
     }
     
-    public ControllerLogin(){
-        username = "";
-        password = "";
-        System.out.println("USer statico"+ usernameText);
-    }
-    
     public ControllerLogin(String pUsername, String pPassword){
         username = pUsername;
         password = pPassword;
+        System.out.println(user.getText());
     }
-
-    /**
-     * @return the usernmaeText
-     */
-    public UsernameText getUsernameText() {
-        return usernameText;
-    }
-
-    /**
-     * @param usernmaeText the usernmaeText to set
-     */
-    public void setUsernameText(UsernameText usernmaeText) {
-        this.usernameText = usernmaeText;
+    
+    public ControllerLogin(){
+        /*username = "";
+        password = "";*/
     }
 }
