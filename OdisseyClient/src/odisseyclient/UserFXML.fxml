@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import java.net.*?>
@@ -8,15 +9,20 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="odisseyclient.UserFXMLController">
+<AnchorPane id="AnchorPane" prefHeight="766.0" prefWidth="1367.0" styleClass="@../../css/style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="odisseyclient.UserFXMLController">
     <stylesheets>
         <URL value="@../../css/style.css" />
     </stylesheets>
    <children>
-      <Label layoutX="56.0" layoutY="41.0" text="Bienvenido " textFill="#9a9292">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#9a9292" height="43.0" layoutX="559.0" layoutY="362.0" stroke="BLACK" strokeType="INSIDE" width="250.0" />
+      <Label layoutX="56.0" layoutY="41.0" text="Welcome " textFill="#9a9292">
          <font>
             <Font name="Impact" size="24.0" />
          </font>
       </Label>
+      <Button layoutX="633.0" layoutY="507.0" mnemonicParsing="false" onAction="#fileChosser" text="Upload Song" />
+      <Button id="play" layoutX="587.0" layoutY="370.0" mnemonicParsing="false" onAction="#play" text="Play" />
+      <Button id="stop" layoutX="734.0" layoutY="370.0" mnemonicParsing="false" onAction="#stop" text="Stop" />
+      <Button layoutX="655.0" layoutY="370.0" mnemonicParsing="false" onAction="#pause" text="Pause" />
    </children>
 </AnchorPane>

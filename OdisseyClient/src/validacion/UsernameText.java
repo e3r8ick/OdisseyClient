@@ -14,13 +14,17 @@ import javafx.scene.control.TextField;
 
 public class UsernameText extends TextField{
     
+    static ControllerLogin controller;
+    static String username;
+    
     public UsernameText(){
         this.setPromptText("username");
     }
 
     @Override
     public String getText(int start, int end) {
-        System.out.println("Username: "+super.getText());
+        username= super.getText();
+        System.out.println("Username: "+ username );
         return super.getText(start, end); //To change body of generated methods, choose Tools | Templates.
     }
     

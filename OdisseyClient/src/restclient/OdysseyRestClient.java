@@ -33,6 +33,7 @@ import org.json.simple.parser.JSONParser;
  * @author erick
  */
 public class OdysseyRestClient{
+<<<<<<< HEAD
 	protected final String USER_AGENT = "Mozilla/5.0";
 	protected String url;
 	protected String charset;
@@ -94,6 +95,19 @@ public class OdysseyRestClient{
 
 	public void Login (String pUsername , String pPassword) throws MalformedURLException, IOException, ParseException{
 
+=======
+    private final String USER_AGENT = "Mozilla/5.0";
+    private String url;
+    private String charset;
+    
+    public OdysseyRestClient(){
+    	this.url = "http://52.88.91.22/Odyssey/";
+    	this.charset = "UTF-8";
+    }
+    
+    public void Login (String pUsername , String pPassword) throws MalformedURLException, IOException{
+    	
+>>>>>>> 2d1c2269d24d548226f67a70b117e2dd83b622de
 		URL obj = new URL(this.url + "login_user.php");
 		HttpURLConnection con =  (HttpURLConnection) obj.openConnection();
 
