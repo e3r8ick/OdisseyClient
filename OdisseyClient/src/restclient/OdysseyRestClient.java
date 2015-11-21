@@ -563,7 +563,7 @@ public class OdysseyRestClient{
 
         // opens input stream from the HTTP connection
         InputStream inputStream = con.getInputStream();
-        String saveFilePath = "../Canciones" + File.separator + fileName;
+        String saveFilePath = "./Canciones" + File.separator + fileName;
         
         // opens an output stream to save into file
         FileOutputStream outputStream = new FileOutputStream(saveFilePath);
@@ -594,9 +594,9 @@ public class OdysseyRestClient{
 //		http.uploadSong("/home/zyoruk/AUD-20150402-WA0001.mp3");
 //		http.Comment(35, "MeGusta");
 //		http.ChangeSongMetadata(35, "Test", "", "", "", "Metal", "");
-		http.like(35);
-		http.dislike(35);
-		http.download("Test");
+//		http.like(35);
+//		http.dislike(35);
+		http.download("AUD-20150402-WA0001.mp3");
 
 	}
 
